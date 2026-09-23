@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0a0f11">
+  <meta name="description" content="Lime Lizard Games Store — Lime Coins, founder rewards, and game cosmetics.">
+  <title>Store — Lime Lizard Games</title>
+  <link rel="icon" href="/assets/lime-lizard-head.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/store/store.css">
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="store-header">
+    <div class="shell header-inner">
+      <a class="brand" href="/">
+        <img src="/assets/lime-lizard-word.svg" alt="Lime Lizard Games">
+      </a>
+
+      <nav class="store-nav">
+        <a href="/">Home</a>
+        <a class="active" href="/store/">Store</a>
+        <a href="/profile/">Profile</a>
+      </nav>
+
+      <div class="wallet" id="wallet">
+        <span class="coin-icon"><span>L</span></span>
+        <div>
+          <strong id="coinBalance">—</strong>
+          <small>Lime Coins</small>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero shell">
+      <div class="hero-copy">
+        <p class="eyebrow">LIME LIZARD STORE</p>
+        <h1>Make every game<br><span>your own.</span></h1>
+        <p>Use Lime Coins across Lime Lizard Games for cosmetics, profiles, game themes, and other non-pay-to-win extras.</p>
+      </div>
+
+      <div class="hero-coin" aria-hidden="true">
+        <div class="coin-big">
+          <div class="coin-big-inner">L</div>
+        </div>
+        <span class="pixel p1"></span>
+        <span class="pixel p2"></span>
+        <span class="pixel p3"></span>
+      </div>
+    </section>
+
+    <section class="shell section">
+      <div class="section-title">
+        <div>
+          <p class="kicker">FEATURED</p>
+          <h2>Founding Player Pack</h2>
+        </div>
+        <span class="founder-tag">LIMITED LAUNCH OFFER</span>
+      </div>
+
+      <article class="founder-card">
+        <div class="founder-main">
+          <div class="founder-badge">🦎</div>
+          <div>
+            <p class="kicker lime">FOUNDING PLAYER</p>
+            <h3>Be here from the beginning.</h3>
+            <p class="founder-copy">Support Lime Lizard Games while we build the first generation of games and receive permanent founder rewards tied to your account.</p>
+          </div>
+        </div>
+
+        <div class="founder-rewards">
+          <div><strong>1,500</strong><span>Lime Coins</span></div>
+          <div><strong>Founder</strong><span>Exclusive Badge</span></div>
+          <div><strong>Exclusive</strong><span>Profile Frame</span></div>
+          <div><strong>Early</strong><span>Feature Access</span></div>
+        </div>
+
+        <div class="founder-buy">
+          <div>
+            <span class="price">$14.99</span>
+            <small>One-time purchase</small>
+          </div>
+          <button class="buy-cash" data-product="founder-pack">Purchase Pack</button>
+        </div>
+      </article>
+    </section>
+
+    <section class="shell section">
+      <div class="section-title">
+        <div>
+          <p class="kicker">CURRENCY</p>
+          <h2>Get Lime Coins</h2>
+        </div>
+        <p class="section-note">Coins are shared across your Lime Lizard account and can be used in supported games.</p>
+      </div>
+
+      <div class="coin-grid">
+        <article class="coin-pack">
+          <div class="mini-coin">L</div>
+          <h3>Starter Stash</h3>
+          <strong class="coin-amount">500</strong>
+          <span>Lime Coins</span>
+          <div class="pack-price">$4.99</div>
+          <button class="buy-cash" data-product="coins-500">Buy Coins</button>
+        </article>
+
+        <article class="coin-pack featured">
+          <span class="best-value">POPULAR</span>
+          <div class="mini-coin">L</div>
+          <h3>Game Night</h3>
+          <strong class="coin-amount">1,100</strong>
+          <span>Lime Coins</span>
+          <div class="bonus">+100 bonus coins</div>
+          <div class="pack-price">$9.99</div>
+          <button class="buy-cash" data-product="coins-1100">Buy Coins</button>
+        </article>
+
+        <article class="coin-pack">
+          <div class="mini-coin">L</div>
+          <h3>Big Stack</h3>
+          <strong class="coin-amount">3,000</strong>
+          <span>Lime Coins</span>
+          <div class="bonus">+500 bonus coins</div>
+          <div class="pack-price">$24.99</div>
+          <button class="buy-cash" data-product="coins-3000">Buy Coins</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="shell section" id="game-store">
+      <div class="section-title">
+        <div>
+          <p class="kicker">GAME STORES</p>
+          <h2>Shop by game</h2>
+        </div>
+      </div>
+
+      <div class="game-tabs" role="tablist">
+        <button class="game-tab active" data-tab="texas42">Texas 42</button>
+        <button class="game-tab" data-tab="platform">Lime Lizard</button>
+        <button class="game-tab" data-tab="future">Future Games</button>
+      </div>
+
+      <div class="tab-panel active" id="texas42">
+        <div class="game-store-head">
+          <div>
+            <p class="kicker lime">TEXAS 42</p>
+            <h3>Table & Domino Shop</h3>
+          </div>
+          <span>Cosmetics only — no gameplay advantage</span>
+        </div>
+
+        <div class="item-grid">
+          <article class="store-item">
+            <div class="item-art felt"></div>
+            <div class="item-body">
+              <span class="item-type">TABLE THEME</span>
+              <h4>Classic Texas Felt</h4>
+              <p>Dark green felt with subtle Lone Star detailing.</p>
+              <button class="coin-buy" data-cost="300" data-item="Classic Texas Felt"><span class="tiny-coin">L</span> 300</button>
+            </div>
+          </article>
+
+          <article class="store-item">
+            <div class="item-art neon"></div>
+            <div class="item-body">
+              <span class="item-type">TABLE THEME</span>
+              <h4>Neon Night</h4>
+              <p>Electric lime and cyan table lighting for late-night matches.</p>
+              <button class="coin-buy" data-cost="650" data-item="Neon Night"><span class="tiny-coin">L</span> 650</button>
+            </div>
+          </article>
+
+          <article class="store-item">
+            <div class="item-art domino-lone"><div class="domino-demo"><span>★</span><hr><span>42</span></div></div>
+            <div class="item-body">
+              <span class="item-type">DOMINO SET</span>
+              <h4>Lone Star Set</h4>
+              <p>Texas-inspired domino faces and engraved star accents.</p>
+              <button class="coin-buy" data-cost="450" data-item="Lone Star Set"><span class="tiny-coin">L</span> 450</button>
+            </div>
+          </article>
+
+          <article class="store-item">
+            <div class="item-art domino-lime"><div class="domino-demo lime-domino"><span>L</span><hr><span>●●</span></div></div>
+            <div class="item-body">
+              <span class="item-type">DOMINO SET</span>
+              <h4>Lime Lizard Set</h4>
+              <p>Signature black-and-lime dominoes built around the studio brand.</p>
+              <button class="coin-buy" data-cost="500" data-item="Lime Lizard Set"><span class="tiny-coin">L</span> 500</button>
+            </div>
+          </article>
+
+          <article class="store-item">
+            <div class="item-art victory">✦</div>
+            <div class="item-body">
+              <span class="item-type">VICTORY EFFECT</span>
+              <h4>Lime Burst</h4>
+              <p>A short lime-pixel celebration when your team wins.</p>
+              <button class="coin-buy" data-cost="350" data-item="Lime Burst"><span class="tiny-coin">L</span> 350</button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="platform">
+        <div class="game-store-head">
+          <div>
+            <p class="kicker lime">ACCOUNT COSMETICS</p>
+            <h3>Lime Lizard Profile Shop</h3>
+          </div>
+        </div>
+
+        <div class="item-grid">
+          <article class="store-item">
+            <div class="item-art frame-demo"><div class="avatar-demo">A</div></div>
+            <div class="item-body">
+              <span class="item-type">PROFILE FRAME</span>
+              <h4>Lime Circuit</h4>
+              <p>Animated-style lime circuit border for your player profile.</p>
+              <button class="coin-buy" data-cost="400" data-item="Lime Circuit Frame"><span class="tiny-coin">L</span> 400</button>
+            </div>
+          </article>
+
+          <article class="store-item">
+            <div class="item-art badge-demo">🦎</div>
+            <div class="item-body">
+              <span class="item-type">PROFILE COSMETIC</span>
+              <h4>Lizard Elite</h4>
+              <p>A premium cosmetic title for your Lime Lizard profile.</p>
+              <button class="coin-buy" data-cost="600" data-item="Lizard Elite"><span class="tiny-coin">L</span> 600</button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="future">
+        <div class="future-box">
+          <span class="future-plus">+</span>
+          <h3>More game stores will appear here.</h3>
+          <p>Every Lime Lizard title can have its own cosmetic catalog while using the same Lime Coin wallet.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell section faq">
+      <p class="kicker">HOW IT WORKS</p>
+      <h2>Lime Coins stay cosmetic.</h2>
+      <div class="faq-grid">
+        <div><strong>One wallet</strong><span>Your Lime Coin balance follows your Lime Lizard account.</span></div>
+        <div><strong>No pay-to-win</strong><span>Coins buy customization, cosmetics, and optional extras—not better odds.</span></div>
+        <div><strong>Game-specific items</strong><span>Each title gets its own shop while sharing the same currency.</span></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <div class="modal">
+      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+      <p class="kicker lime" id="modalKicker">STORE</p>
+      <h3 id="modalTitle">Coming next</h3>
+      <p id="modalText">This button is ready to connect to secure checkout.</p>
+      <button class="modal-ok" id="modalOk">Got it</button>
+    </div>
+  </div>
+
+  <footer class="store-footer">
+    <div class="shell">
+      <span>© 2026 Lime Lizard Games</span>
+      <a href="/privacy/">Privacy</a>
+      <a href="/data-deletion/">Data Deletion</a>
+    </div>
+  </footer>
+
+  <script type="module" src="/store/store.js"></script>
+</body>
+</html>
