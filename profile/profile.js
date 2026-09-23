@@ -212,6 +212,7 @@ function renderEquipped() {
   const slots = [
     ['texas42-table-theme', 'Table Theme'],
     ['texas42-domino-set', 'Domino Set'],
+    ['texas42-duck-coin', 'Duck Coin'],
     ['texas42-victory-effect', 'Victory Effect']
   ];
 
@@ -313,6 +314,7 @@ function slotFor(item) {
   if (item.item_type === 'profile_title') return 'profile-title';
   if (item.item_type === 'table_theme' && item.game_slug === 'texas-42') return 'texas42-table-theme';
   if (item.item_type === 'domino_set' && item.game_slug === 'texas-42') return 'texas42-domino-set';
+  if (item.item_type === 'duck_coin' && item.game_slug === 'texas-42') return 'texas42-duck-coin';
   if (item.item_type === 'victory_effect' && item.game_slug === 'texas-42') return 'texas42-victory-effect';
   return null;
 }
@@ -346,6 +348,7 @@ function labelForType(type) {
   return ({
     table_theme: 'TABLE THEME',
     domino_set: 'DOMINO SET',
+    duck_coin: 'DUCK COIN',
     victory_effect: 'VICTORY EFFECT',
     profile_frame: 'PROFILE FRAME',
     profile_title: 'PROFILE TITLE'
@@ -365,6 +368,7 @@ function artIcon(item) {
   if (item.item_type === 'table_theme') return '▦';
   if (item.item_type === 'domino_set') return '⚄';
   if (item.item_type === 'victory_effect') return '✦';
+  if (item.item_type === 'duck_coin') return '🦆';
   if (item.item_type === 'profile_frame') return '◉';
   if (item.item_type === 'profile_title') return '★';
   return '◆';
