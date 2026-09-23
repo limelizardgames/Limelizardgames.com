@@ -1,14 +1,11 @@
-# Main-page login + Lime Coin display fix
+# Lime Lizard nav style refresh
 
-Replace the existing `auth-nav.js` in the repository root with the file in this package.
+1. Replace the existing root `auth-nav.js` with the file in this folder.
+2. Open your existing `account-ui.css`.
+3. Paste the contents of `ADD_TO_account-ui.css` at the very bottom.
+4. In `index.html`, remove the top-menu Texas 42 button by deleting this line:
 
-Then copy the contents of `ADD_TO_account-ui.css` and paste them at the END of
-your existing `account-ui.css`.
+<a class="nav-cta" href="https://play42.limelizardgames.com">Play Texas 42 <span>↗</span></a>
 
-Why this fixes the issue:
-- Re-checks the Supabase user when the main page loads.
-- Handles Safari's back/forward cache via the `pageshow` event.
-- Refreshes account/coin state when the browser tab becomes active again.
-- Listens for Supabase auth state changes.
-- Uses `getUser()` to verify the current session.
-- Shows the Lime Coin balance directly in the main navigation.
+This will leave the cleaner top navigation:
+Games / Studio / Contact / Lime Coins / Account
