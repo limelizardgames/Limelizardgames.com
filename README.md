@@ -1,20 +1,14 @@
-# Lime Lizard Games website
+# Main-page login + Lime Coin display fix
 
-Static responsive website for **LimeLizardGames.com**.
+Replace the existing `auth-nav.js` in the repository root with the file in this package.
 
-## Files
-- `index.html` — page structure/content
-- `styles.css` — complete responsive styling
-- `script.js` — navigation, scroll header, reveal effects, current year
-- `assets/` — Lime Lizard Games SVG logos
+Then copy the contents of `ADD_TO_account-ui.css` and paste them at the END of
+your existing `account-ui.css`.
 
-## Launch
-Upload the contents of this folder to the web root for `LimeLizardGames.com` using your preferred host (Vercel, Netlify, Cloudflare Pages, traditional cPanel, etc.).
-
-The Texas 42 buttons already point to:
-`https://play42.limelizardgames.com`
-
-## Before going live
-1. Confirm `hello@limelizardgames.com` is the email address you want displayed; otherwise change it in `index.html`.
-2. Point `LimeLizardGames.com` DNS to the hosting provider.
-3. Point the `play42` subdomain to wherever the Texas 42 app is hosted.
+Why this fixes the issue:
+- Re-checks the Supabase user when the main page loads.
+- Handles Safari's back/forward cache via the `pageshow` event.
+- Refreshes account/coin state when the browser tab becomes active again.
+- Listens for Supabase auth state changes.
+- Uses `getUser()` to verify the current session.
+- Shows the Lime Coin balance directly in the main navigation.
