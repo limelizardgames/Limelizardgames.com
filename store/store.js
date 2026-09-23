@@ -119,6 +119,17 @@ document.querySelectorAll('.coin-buy').forEach(button => {
   });
 });
 
+// The Duck can be purchased once its catalog migration is present in Supabase.
+const duckButton = document.querySelector('.coin-buy[data-item-slug="texas42-lime-duck"]');
+if (duckButton) {
+  duckButton.disabled = true;
+  duckButton.textContent = 'Checking availability…';
+  const { data: duckItem, error: duckError } = await supabase.from('store_items')
+    .select('slug,coin_cost').eq('slug', 'texas42-lime-duck').eq('active', true).maybeSingle();
+  if (duckError || !duckItem) duckButton.textContent = 'Coming soon';
+  else { duckButton.dataset.cost = String(duckItem.coin_cost); duckButton.textContent = `L ${duckItem.coin_cost}`; duckButton.disabled = false; }
+}
+
 await markOwnedItems();
 await markFounderPackOwned();
 
