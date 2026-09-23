@@ -349,6 +349,7 @@ function labelForType(type) {
     table_theme: 'TABLE THEME',
     domino_set: 'DOMINO SET',
     duck_coin: 'DUCK COIN',
+    table_bundle: 'FELT COLLECTION',
     victory_effect: 'VICTORY EFFECT',
     profile_frame: 'PROFILE FRAME',
     profile_title: 'PROFILE TITLE'
@@ -369,6 +370,7 @@ function artIcon(item) {
   if (item.item_type === 'domino_set') return '⚄';
   if (item.item_type === 'victory_effect') return '✦';
   if (item.item_type === 'duck_coin') return '🦆';
+  if (item.item_type === 'table_bundle') return '▦';
   if (item.item_type === 'profile_frame') return '◉';
   if (item.item_type === 'profile_title') return '★';
   return '◆';
