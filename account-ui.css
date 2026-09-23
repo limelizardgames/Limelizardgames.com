@@ -1,2 +1,57 @@
 .auth-nav{display:flex;align-items:center;gap:12px}.auth-link{white-space:nowrap}.account-cta{background:var(--lime);color:#071007!important;border-color:var(--lime)!important}.player-chip{position:relative;display:flex;align-items:center;gap:10px;border:1px solid #354044;border-radius:999px;padding:7px 11px 7px 8px;color:#fff!important}.player-chip:hover{border-color:#5e6c6f}.player-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--lime),#355f10);display:grid;place-items:center;color:#071007;font:800 12px Space Grotesk}.coin-mini{color:var(--lime2);font-size:12px}.profile-menu{position:absolute;right:0;top:calc(100% + 10px);width:230px;background:#101719;border:1px solid #2a3639;border-radius:12px;padding:8px;box-shadow:0 24px 60px rgba(0,0,0,.45);display:none}.profile-menu.open{display:block}.profile-menu a,.profile-menu button{width:100%;display:block;text-align:left;padding:11px 12px;border:0;background:none;color:#c8d0ce;text-decoration:none;border-radius:7px;font:600 13px Outfit;cursor:pointer}.profile-menu a:hover,.profile-menu button:hover{background:#172124;color:#fff}.profile-menu .menu-sep{height:1px;background:#263033;margin:6px}.profile-menu .signout{color:#ffaaaa}
 @media(max-width:900px){.auth-nav{flex-direction:column;align-items:stretch}.player-chip{border-radius:8px}.profile-menu{position:static;width:100%;box-shadow:none;margin-top:8px}}
+
+/* === Logged-in Lime Lizard navigation === */
+.logged-in-nav{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.lime-coin-pill{
+  display:flex!important;
+  align-items:center;
+  gap:7px;
+  min-height:44px;
+  padding:9px 13px!important;
+  border:1px solid #354044;
+  border-radius:999px;
+  background:rgba(130,230,0,.06);
+  color:#eef5ef!important;
+  text-decoration:none;
+  white-space:nowrap;
+}
+.lime-coin-pill:hover{
+  border-color:#82e600!important;
+  background:rgba(130,230,0,.1);
+}
+.lime-coin-dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:#82e600;
+  box-shadow:0 0 10px rgba(130,230,0,.55);
+}
+.lime-coin-pill strong{
+  color:#b2ff16;
+  font-family:Space Grotesk,sans-serif;
+  font-size:14px;
+}
+.lime-coin-label{
+  color:#8e9b99;
+  font-size:11px;
+}
+.player-name{max-width:130px;overflow:hidden;text-overflow:ellipsis}
+.player-chevron{font-size:10px;color:#84918f}
+.profile-menu-head{
+  padding:10px 12px 12px;
+  border-bottom:1px solid #263033;
+  margin-bottom:5px;
+}
+.profile-menu-head strong{display:block;color:#fff;font-size:14px}
+.profile-menu-head span{display:block;color:#788684;font-size:11px;margin-top:3px}
+
+@media(max-width:900px){
+  .logged-in-nav{flex-direction:column;align-items:stretch}
+  .lime-coin-pill{border-radius:8px;justify-content:center}
+  .player-name{max-width:none}
+}
