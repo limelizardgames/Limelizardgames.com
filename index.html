@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="account-ui.css" />
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
@@ -26,6 +27,10 @@
         <a href="#games">Games</a>
         <a href="#studio">Studio</a>
         <a href="#contact">Contact</a>
+        <div class="auth-nav" id="authNav">
+          <a href="/login/" class="auth-link">Sign In</a>
+          <a href="/signup/" class="nav-cta account-cta">Create Account</a>
+        </div>
         <a class="nav-cta" href="https://play42.limelizardgames.com">Play Texas 42 <span>↗</span></a>
       </nav>
     </div>
@@ -145,5 +150,6 @@
   </footer>
 
   <script src="script.js"></script>
+  <script type="module" src="auth-nav.js"></script>
 </body>
 </html>
