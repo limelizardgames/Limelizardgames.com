@@ -236,9 +236,18 @@ function applyProfileCosmetics() {
   frameLabel.classList.add('hidden');
   title.classList.add('hidden');
 
+  const avatarWrap = document.querySelector('.avatar-wrap');
+  avatarWrap?.classList.remove('founder-active');
+
+  const hasFounderEntitlement = entitlementRows.some(
+    row => row.entitlement_slug === 'founder-profile-frame'
+  );
+
   const frame = equippedMap.get('profile-frame');
-  if (frame?.cosmetic_slug === 'founder-profile-frame') {
+
+  if (frame?.cosmetic_slug === 'founder-profile-frame' || hasFounderEntitlement) {
     avatar.classList.add('founder-frame');
+    avatarWrap?.classList.add('founder-active');
     frameLabel.textContent = 'FOUNDER';
     frameLabel.classList.remove('hidden');
   } else if (frame?.cosmetic_slug === 'profile-lime-circuit') {
