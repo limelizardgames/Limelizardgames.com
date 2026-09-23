@@ -1,5 +1,11 @@
 import { supabase } from '/supabase.js';
 
+let catalogMap = new Map();
+let inventoryRows = [];
+let entitlementRows = [];
+let equippedMap = new Map();
+let activeInventoryTab = 'all';
+
 const { data: { session } } = await supabase.auth.getSession();
 
 if (!session) {
@@ -7,12 +13,6 @@ if (!session) {
 } else {
   await loadProfile(session.user.id);
 }
-
-let catalogMap = new Map();
-let inventoryRows = [];
-let entitlementRows = [];
-let equippedMap = new Map();
-let activeInventoryTab = 'all';
 
 async function loadProfile(uid) {
   const [
