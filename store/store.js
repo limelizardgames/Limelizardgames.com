@@ -120,6 +120,7 @@ document.querySelectorAll('.coin-buy').forEach(button => {
 });
 
 await markOwnedItems();
+await markFounderPackOwned();
 
 async function markOwnedItems() {
   if (!session?.user) return;
@@ -137,6 +138,29 @@ async function markOwnedItems() {
       button.disabled = true;
     }
   });
+}
+
+
+async function markFounderPackOwned() {
+  if (!session?.user) return;
+
+  const { data: entitlements } = await supabase
+    .from('user_entitlements')
+    .select('entitlement_slug')
+    .eq('user_id', session.user.id)
+    .eq('entitlement_slug', 'founding-player-pack')
+    .limit(1);
+
+  if (!entitlements?.length) return;
+
+  const button = document.querySelector('.buy-cash[data-product="founder-pack"]');
+  if (!button) return;
+
+  button.textContent = 'Owned ✓';
+  button.disabled = true;
+
+  const card = button.closest('.founder-card');
+  if (card) card.classList.add('owned-founder-pack');
 }
 
 function showCheckoutResult() {

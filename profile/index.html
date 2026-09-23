@@ -1,8 +1,128 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Player Profile — Lime Lizard Games</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/portal.css"><link rel="icon" href="/assets/lime-lizard-head.svg" type="image/svg+xml"></head><body><header class="topbar page-shell"><a href="/"><img src="/assets/lime-lizard-word.svg" alt="Lime Lizard Games"></a><a href="/">← Back to Lime Lizard Games</a></header>
-<main class="page-shell profile-page"><div id="loading" class="loading">Loading player profile…</div><div id="profileContent" class="hidden">
-<section class="profile-head"><div class="profile-identity"><div class="avatar-large" id="avatar">L</div><div><p class="eyebrow">LIME LIZARD PLAYER</p><h1 id="displayName">Player</h1><div class="handle" id="username">@player</div></div></div><a class="ghost-button" style="width:auto;text-decoration:none" href="/account/">Edit Profile</a></section>
-<div class="dashboard"><div>
-<section class="panel"><h2>Progression</h2><div class="stats-row"><div class="stat"><strong id="level">1</strong><span>LEVEL</span></div><div class="stat"><strong id="xp">0</strong><span>TOTAL XP</span></div><div class="stat"><strong class="coin" id="coins">● 0</strong><span>LIME COINS</span></div></div><div class="xp-wrap"><div class="xp-label"><span>Progress to next level</span><span id="xpProgressLabel">0 / 100 XP</span></div><div class="xp-track"><div class="xp-fill" id="xpFill"></div></div></div></section>
-<section class="panel" style="margin-top:16px"><h2>Texas 42</h2><div class="game-card"><h3>Texas 42</h3><div class="game-stats"><div><strong id="gamesPlayed">0</strong>Games Played</div><div><strong id="wins">0</strong>Wins</div><div><strong id="losses">0</strong>Losses</div><div><strong id="winRate">—</strong>Win Rate</div><div><strong id="currentStreak">0</strong>Current Streak</div><div><strong id="bestStreak">0</strong>Best Streak</div></div></div></section>
-</div><aside><section class="panel"><h2>Badges</h2><div id="badgeGrid" class="badge-grid"><div class="loading">Loading badges…</div></div></section></aside></div>
-</div></main><script type="module" src="/profile/profile.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Player Profile — Lime Lizard Games</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/portal.css">
+  <link rel="icon" href="/assets/lime-lizard-head.svg" type="image/svg+xml">
+</head>
+<body>
+<header class="topbar page-shell">
+  <a href="/"><img src="/assets/lime-lizard-word.svg" alt="Lime Lizard Games"></a>
+  <div class="profile-top-links">
+    <a href="/store/">Store</a>
+    <a href="/">← Back to Lime Lizard Games</a>
+  </div>
+</header>
+
+<main class="page-shell profile-page">
+  <div id="loading" class="loading">Loading player profile…</div>
+
+  <div id="profileContent" class="hidden">
+    <section class="profile-head">
+      <div class="profile-identity">
+        <div class="avatar-wrap">
+          <div class="avatar-large" id="avatar">L</div>
+          <span id="frameLabel" class="frame-label hidden"></span>
+        </div>
+        <div>
+          <p class="eyebrow">LIME LIZARD PLAYER</p>
+          <h1 id="displayName">Player</h1>
+          <div class="handle" id="username">@player</div>
+          <div id="profileTitle" class="profile-title hidden"></div>
+        </div>
+      </div>
+      <a class="ghost-button profile-edit-button" href="/account/">Edit Profile</a>
+    </section>
+
+    <div class="dashboard">
+      <div>
+        <section class="panel">
+          <h2>Progression</h2>
+          <div class="stats-row">
+            <div class="stat"><strong id="level">1</strong><span>LEVEL</span></div>
+            <div class="stat"><strong id="xp">0</strong><span>TOTAL XP</span></div>
+            <div class="stat"><strong class="coin" id="coins">● 0</strong><span>LIME COINS</span></div>
+          </div>
+          <div class="xp-wrap">
+            <div class="xp-label">
+              <span>Progress to next level</span>
+              <span id="xpProgressLabel">0 / 100 XP</span>
+            </div>
+            <div class="xp-track"><div class="xp-fill" id="xpFill"></div></div>
+          </div>
+        </section>
+
+        <section class="panel" style="margin-top:16px">
+          <div class="panel-heading-row">
+            <h2>Texas 42</h2>
+            <a href="/store/#game-store" class="panel-link">Shop Texas 42</a>
+          </div>
+          <div class="game-card">
+            <h3>Texas 42</h3>
+            <div class="game-stats">
+              <div><strong id="gamesPlayed">0</strong>Games Played</div>
+              <div><strong id="wins">0</strong>Wins</div>
+              <div><strong id="losses">0</strong>Losses</div>
+              <div><strong id="winRate">—</strong>Win Rate</div>
+              <div><strong id="currentStreak">0</strong>Current Streak</div>
+              <div><strong id="bestStreak">0</strong>Best Streak</div>
+            </div>
+          </div>
+
+          <div class="equipped-block">
+            <p class="inventory-eyebrow">EQUIPPED FOR TEXAS 42</p>
+            <div id="texas42Equipped" class="equipped-grid"></div>
+          </div>
+        </section>
+
+        <section class="panel inventory-panel" style="margin-top:16px">
+          <div class="panel-heading-row">
+            <div>
+              <p class="inventory-eyebrow">COLLECTION</p>
+              <h2>Inventory</h2>
+            </div>
+            <a href="/store/" class="panel-link">Visit Store</a>
+          </div>
+
+          <div class="inventory-tabs">
+            <button class="inventory-tab active" data-inventory-tab="all">All</button>
+            <button class="inventory-tab" data-inventory-tab="profile">Profile</button>
+            <button class="inventory-tab" data-inventory-tab="texas-42">Texas 42</button>
+          </div>
+
+          <div id="inventoryGrid" class="inventory-grid">
+            <div class="loading">Loading inventory…</div>
+          </div>
+        </section>
+
+        <section class="panel inventory-panel" style="margin-top:16px">
+          <p class="inventory-eyebrow">ACCOUNT REWARDS</p>
+          <h2>Entitlements</h2>
+          <div id="entitlementGrid" class="inventory-grid compact">
+            <div class="loading">Loading rewards…</div>
+          </div>
+        </section>
+      </div>
+
+      <aside>
+        <section class="panel">
+          <h2>Badges</h2>
+          <div id="badgeGrid" class="badge-grid">
+            <div class="loading">Loading badges…</div>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<div id="profileToast" class="profile-toast hidden"></div>
+
+<script type="module" src="/profile/profile.js"></script>
+</body>
+</html>
