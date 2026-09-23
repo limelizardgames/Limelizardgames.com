@@ -70,8 +70,9 @@ document.querySelectorAll('.buy-cash').forEach(button => {
   });
 });
 
-document.querySelectorAll('.coin-buy').forEach(button => {
-  button.addEventListener('click', async () => {
+document.addEventListener('click', async event => {
+  const button = event.target.closest('.coin-buy');
+  if (!button) return;
     if (!session?.user) {
       location.href = `/login/?return=${encodeURIComponent('/store/')}`;
       return;
@@ -115,8 +116,8 @@ document.querySelectorAll('.coin-buy').forEach(button => {
     button.textContent = 'Owned ✓';
     button.disabled = true;
 
+    await markOwnedItems();
     openModal('PURCHASE COMPLETE', itemName, `Added to your inventory. New balance: ${currentBalance.toLocaleString()} Lime Coins.`);
-  });
 });
 
 // The Duck can be purchased once its catalog migration is present in Supabase.
@@ -130,8 +131,47 @@ if (duckButton) {
   else { duckButton.dataset.cost = String(duckItem.coin_cost); duckButton.textContent = `L ${duckItem.coin_cost}`; duckButton.disabled = false; }
 }
 
+await loadTexas42Collection();
 await markOwnedItems();
 await markFounderPackOwned();
+
+const bundleMembers = {"texas42-pack-unique":["texas42-felt-nebula","texas42-felt-compass-gear","texas42-felt-kraken","texas42-felt-dragon","texas42-felt-western","texas42-felt-celtic-wolf","texas42-felt-tiki","texas42-felt-campfire-mountains","texas42-felt-retro-sunrise","texas42-felt-luxury"],"texas42-pack-seasonal":["texas42-felt-harvest-table","texas42-felt-st-patricks-day","texas42-felt-summer","texas42-felt-cherry-blossom","texas42-felt-winter-wonderland","texas42-felt-halloween","texas42-felt-valentines-day","texas42-felt-christmas-wreath","texas42-felt-thanksgiving-fall","texas42-felt-easter"],"texas42-pack-campus":["texas42-felt-texas-state","texas42-felt-ut-dallas","texas42-felt-ut-arlington","texas42-felt-university-of-houston","texas42-felt-texas-tech","texas42-felt-ut-rio-grande-valley","texas42-felt-texas-a-m","texas42-felt-north-texas","texas42-felt-ut-san-antonio","texas42-felt-ut-austin"]};
+const assetRoot = 'https://play42.limelizardgames.com/';
+async function loadTexas42Collection() {
+  const { data: catalog, error } = await supabase.from('store_items')
+    .select('slug,name,description,item_type,coin_cost').eq('game_slug','texas-42').eq('active',true);
+  if (error || !catalog) return;
+  const items = catalog.filter(item => item.slug.startsWith('texas42-felt-') ||
+    item.slug.endsWith('-tiles') || Object.hasOwn(bundleMembers,item.slug));
+  if (!items.length) return;
+  const holder = document.getElementById('texas42CollectionsGrid');
+  if (!holder) return;
+  items.sort((a,b) => (a.item_type === 'table_bundle' ? -2 : a.item_type === 'domino_set' ? -1 : 0)
+    - (b.item_type === 'table_bundle' ? -2 : b.item_type === 'domino_set' ? -1 : 0) || a.name.localeCompare(b.name));
+  const previews = { 'texas42-pack-unique':'texas42-felt-nebula',
+    'texas42-pack-seasonal':'texas42-felt-harvest-table',
+    'texas42-pack-campus':'texas42-felt-texas-state' };
+  for (const item of items) {
+    const card = document.createElement('article'); card.className = 'store-item';
+    const art = document.createElement('div'); art.className = 'item-art';
+    const img = document.createElement('img');
+    const path = item.item_type === 'domino_set'
+      ? 'shop/tiles/' + (item.slug.includes('woodland') ? 'woodland' : 'regal-amethyst') + '/6-6.webp'
+      : 'shop/felts/' + (previews[item.slug] || item.slug) + '.webp';
+    img.src = assetRoot + path; img.alt = ''; img.loading = 'lazy';
+    img.style.cssText = 'display:block;width:100%;height:100%;object-fit:cover'; art.append(img);
+    const body = document.createElement('div'); body.className = 'item-body';
+    const type = document.createElement('span'); type.className = 'item-type';
+    type.textContent = item.item_type === 'table_bundle' ? 'FELT COLLECTION' : item.item_type === 'domino_set' ? 'DOMINO SET' : 'TABLE FELT';
+    const title = document.createElement('h4'); title.textContent = item.name;
+    const desc = document.createElement('p'); desc.textContent = item.description || '';
+    const buy = document.createElement('button'); buy.className = 'coin-buy';
+    buy.dataset.itemSlug = item.slug; buy.dataset.item = item.name;
+    buy.dataset.cost = String(item.coin_cost); buy.dataset.baseCost = String(item.coin_cost); buy.textContent = 'L ' + item.coin_cost.toLocaleString();
+    body.append(type,title,desc,buy); card.append(art,body); holder.append(card);
+  }
+  document.getElementById('texas42Collection').hidden = false;
+}
 
 async function markOwnedItems() {
   if (!session?.user) return;
@@ -144,9 +184,13 @@ async function markOwnedItems() {
   const owned = new Set((inventory || []).map(x => x.item_slug));
 
   document.querySelectorAll('.coin-buy').forEach(button => {
-    if (owned.has(button.dataset.itemSlug)) {
-      button.textContent = 'Owned ✓';
-      button.disabled = true;
+    const members = bundleMembers[button.dataset.itemSlug];
+    if (members) {
+      const remaining = members.filter(slug => !owned.has(slug)).length;
+      if (remaining === 0) { button.textContent = 'Owned ✓'; button.disabled = true; }
+      else { const price = Math.ceil(Number(button.dataset.baseCost) * remaining / members.length); button.dataset.cost = String(price); button.textContent = 'L ' + price.toLocaleString(); }
+    } else if (owned.has(button.dataset.itemSlug)) {
+      button.textContent = 'Owned ✓'; button.disabled = true;
     }
   });
 }
