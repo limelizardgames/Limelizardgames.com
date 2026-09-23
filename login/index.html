@@ -1,8 +1,58 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sign In — Lime Lizard Games</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/portal.css"><link rel="icon" href="/assets/lime-lizard-head.svg" type="image/svg+xml"></head><body><header class="topbar page-shell"><a href="/"><img src="/assets/lime-lizard-word.svg" alt="Lime Lizard Games"></a><a href="/">← Back to Lime Lizard Games</a></header>
-<main class="page-shell auth-layout"><section class="brand-panel"><p class="eyebrow">PLAYER ACCOUNT</p><h1>Welcome<br><span>back.</span></h1><p>Sign in to your Lime Lizard account to keep your identity, progression, Lime Coins, badges, achievements, and game history together.</p></section>
-<section class="form-card"><h2>Sign in</h2><p>Continue your Lime Lizard Games journey.</p><form id="loginForm">
-<div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
-<div class="field"><label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" required></div>
-<div id="message" class="message"></div><button id="submitButton" class="primary-button" type="submit">Sign In</button>
-</form><p class="helper">New player? <a href="/signup/">Create an account</a></p></section></main>
-<script type="module" src="/login/login.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sign In — Lime Lizard Games</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/portal.css"><link rel="icon" href="/assets/lime-lizard-head.svg" type="image/svg+xml">
+</head>
+<body>
+  <header class="topbar page-shell"><a href="/"><img src="/assets/lime-lizard-word.svg" alt="Lime Lizard Games"></a><a href="/">← Back to Lime Lizard Games</a></header>
+  <main class="page-shell auth-layout">
+    <section class="brand-panel">
+      <p class="eyebrow">PLAYER ACCOUNT</p>
+      <h1>Welcome<br><span>back.</span></h1>
+      <p>Sign in to your Lime Lizard account to keep your identity, progression, Lime Coins, badges, achievements, and game history together.</p>
+    </section>
+
+    <section class="form-card">
+      <h2>Sign in</h2>
+      <p>Continue your Lime Lizard Games journey.</p>
+
+      <div class="social-auth">
+        <button class="social-button google" id="googleLogin" type="button">
+          <span class="social-icon google-icon">G</span>
+          <span>Continue with Google</span>
+        </button>
+
+        <button class="social-button facebook" id="facebookLogin" type="button">
+          <span class="social-icon facebook-icon">f</span>
+          <span>Continue with Facebook</span>
+        </button>
+      </div>
+
+      <div class="auth-divider"><span>or sign in with email</span></div>
+
+      <form id="loginForm">
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required>
+        </div>
+
+        <div id="message" class="message"></div>
+
+        <button id="submitButton" class="primary-button" type="submit">Sign In</button>
+      </form>
+
+      <p class="helper">New player? <a href="/signup/">Create an account</a></p>
+    </section>
+  </main>
+
+  <script type="module" src="/login/login.js"></script>
+</body>
+</html>
