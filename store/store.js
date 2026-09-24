@@ -131,12 +131,12 @@ if (duckButton) {
   else { duckButton.dataset.cost = String(duckItem.coin_cost); duckButton.textContent = `L ${duckItem.coin_cost}`; duckButton.disabled = false; }
 }
 
+const bundleMembers = {"texas42-pack-unique":["texas42-felt-nebula","texas42-felt-compass-gear","texas42-felt-kraken","texas42-felt-dragon","texas42-felt-western","texas42-felt-celtic-wolf","texas42-felt-tiki","texas42-felt-campfire-mountains","texas42-felt-retro-sunrise","texas42-felt-luxury"],"texas42-pack-seasonal":["texas42-felt-harvest-table","texas42-felt-st-patricks-day","texas42-felt-summer","texas42-felt-cherry-blossom","texas42-felt-winter-wonderland","texas42-felt-halloween","texas42-felt-valentines-day","texas42-felt-christmas-wreath","texas42-felt-thanksgiving-fall","texas42-felt-easter"],"texas42-pack-campus":["texas42-felt-texas-state","texas42-felt-ut-dallas","texas42-felt-ut-arlington","texas42-felt-university-of-houston","texas42-felt-texas-tech","texas42-felt-ut-rio-grande-valley","texas42-felt-texas-a-m","texas42-felt-north-texas","texas42-felt-ut-san-antonio","texas42-felt-ut-austin"]};
+const assetRoot = 'https://play42.limelizardgames.com/';
 await loadTexas42Collection();
 await markOwnedItems();
 await markFounderPackOwned();
 
-const bundleMembers = {"texas42-pack-unique":["texas42-felt-nebula","texas42-felt-compass-gear","texas42-felt-kraken","texas42-felt-dragon","texas42-felt-western","texas42-felt-celtic-wolf","texas42-felt-tiki","texas42-felt-campfire-mountains","texas42-felt-retro-sunrise","texas42-felt-luxury"],"texas42-pack-seasonal":["texas42-felt-harvest-table","texas42-felt-st-patricks-day","texas42-felt-summer","texas42-felt-cherry-blossom","texas42-felt-winter-wonderland","texas42-felt-halloween","texas42-felt-valentines-day","texas42-felt-christmas-wreath","texas42-felt-thanksgiving-fall","texas42-felt-easter"],"texas42-pack-campus":["texas42-felt-texas-state","texas42-felt-ut-dallas","texas42-felt-ut-arlington","texas42-felt-university-of-houston","texas42-felt-texas-tech","texas42-felt-ut-rio-grande-valley","texas42-felt-texas-a-m","texas42-felt-north-texas","texas42-felt-ut-san-antonio","texas42-felt-ut-austin"]};
-const assetRoot = 'https://play42.limelizardgames.com/';
 async function loadTexas42Collection() {
   const { data: catalog, error } = await supabase.from('store_items')
     .select('slug,name,description,item_type,coin_cost').eq('game_slug','texas-42').eq('active',true);
