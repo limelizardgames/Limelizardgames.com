@@ -22,8 +22,9 @@ const PLAYBOOK_DATA={
 const ALL_FEATS=['Acrobatics','Blindside','Counterfeit','Disable Device','Hide','Pickpocket','Sneak','Pick Lock','Sleight of Hand'];
 function buildInit(c){
  if(!c.build||c.build.playbook!==c.playbook){
+  const hasLegacy=!!(c.drives||c.moves||c.nature||Object.values(c.stats||{}).some(n=>n!==0));
   const pb=PLAYBOOK_DATA[c.playbook]||PLAYBOOK_DATA['The Adventurer'];
-  c.build={playbook:c.playbook,bonus:'',nature:'',drives:[],chosenMoves:[],chosenFeats:[...pb.feats],weapon:'',connections:'',background:'',initialized:false};
+  c.build={playbook:c.playbook,bonus:'',nature:'',drives:[],chosenMoves:[],chosenFeats:[...pb.feats],weapon:'',connections:'',background:'',initialized:hasLegacy};
  }
  return c.build;
 }
@@ -47,7 +48,7 @@ function validBuild(c){
 }
 function wizardChoice(label,key,options,current,help){return '<div class="field"><label>'+label+'</label><select data-build="'+key+'"><option value="">Choose...</option>'+options.map(x=>'<option value="'+esc(x)+'" '+(current===x?'selected':'')+'>'+esc(x)+'</option>').join('')+'</select>'+(help?'<small>'+help+'</small>':'')+'</div>'}
 function characterWizard(i){
- const c=data.characters[i],b=buildInit(c),pb=PLAYBOOK_DATA[c.playbook];applyPlaybook(c);
+ current=i;const c=data.characters[i],b=buildInit(c),pb=PLAYBOOK_DATA[c.playbook];applyPlaybook(c);
  const checkboxGroup=(key,opts,selected,max)=>'<div class="field"><label>'+key+' — choose '+max+'</label><div class="guide-choices">'+opts.map(x=>'<label class="guide-opt"><input type="checkbox" data-checkgroup="'+key+'" value="'+esc(x)+'" '+(selected.includes(x)?'checked':'')+'><span>'+esc(x)+'</span></label>').join('')+'</div></div>';
  const st=stats.map((k,j)=>'<div class="stat"><span class="tiny">'+k+'</span><strong>'+(c.stats[k]>=0?'+':'')+c.stats[k]+'</strong><span class="tiny">'+(pb.base[j]>=0?'+':'')+pb.base[j]+' base</span></div>').join('');
  const problems=validBuild(c);
